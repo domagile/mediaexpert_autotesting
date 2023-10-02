@@ -13,7 +13,8 @@ public class LoginPage extends BasePage {
 
     By loginBox = By.xpath("//div[@class=\"content\"]//input[@type=\"email\"]");
     By passwordBox = By.xpath("//input[@type=\"password\"]");
-    By buttonLogin = By.xpath("//span[contains(text(),'Zaloguj się')]");
+    By buttonLogin = By.xpath("(//span[contains(text(),'Zaloguj się')])[2]");
+    By greetingLoginText = By.xpath("//h3[contains(text(),'Witaj Olha Bom')]");
 
 
     public void setEmail(String password) {
@@ -29,7 +30,7 @@ public class LoginPage extends BasePage {
     }
 
     public void waitForGreetingLoginText() {
-        getWait().until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h3[contains(text(),'Witaj Olha Bom')]")));
+        getWait().until(ExpectedConditions.presenceOfElementLocated(greetingLoginText));
     }
 }
 

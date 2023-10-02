@@ -18,7 +18,6 @@ public class CartAdditionWithIntermediateLoginTest {
         productPage.clickAddToCart();
         productPage.closeGuaranteeBanner();
         CartPage cartPage = productPage.clickGoToCart();
-        //todo: check text "TV" or what?
         cartPage.waitTextOnDeliveryStep();
 
         cartPage.selectPaymentMethod();

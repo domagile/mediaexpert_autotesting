@@ -38,15 +38,13 @@ public class CartPage extends BasePage {
 
     public void selectPaymentMethod() throws InterruptedException {
         getWait().until(ExpectedConditions.presenceOfElementLocated(selectBlik));
-        WebElement selectPayment = getDriver().findElement(selectBlik);
-        selectPayment.click();
+        getDriver().findElement(selectBlik).click();
         Thread.sleep(5000);
     }
 
     public LoginPage clickNextAtCartStep() throws InterruptedException {
         getWait().until(ExpectedConditions.presenceOfElementLocated(nextButton));
-        WebElement buttonNext = getDriver().findElement(nextButton);
-        buttonNext.click();
+        getDriver().findElement(nextButton).click();
         Thread.sleep(5000);
         return new LoginPage(getDriver(), getWait());
     }
@@ -65,13 +63,11 @@ public class CartPage extends BasePage {
 
     public void deleteItemFromCart() {
         getWait().until(ExpectedConditions.presenceOfElementLocated(deleteFromCart));
-        WebElement removeFromBasket = getDriver().findElement(deleteFromCart);
-        removeFromBasket.click();
+        getDriver().findElement(deleteFromCart).click();
     }
 
     public void confirmDeletion() {
         getWait().until(ExpectedConditions.presenceOfElementLocated(deletionConfirmation));
-        WebElement deletionConfirmation = getDriver().findElement(this.deletionConfirmation);
-        deletionConfirmation.click();
+        getDriver().findElement(this.deletionConfirmation).click();
     }
 }

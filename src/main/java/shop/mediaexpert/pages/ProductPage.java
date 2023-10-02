@@ -10,45 +10,56 @@ public class ProductPage extends BasePage {
     By goToCart = By.xpath("(//span[contains(text(),'Idź do koszyka')])");
     By addToWishListLocator = By.xpath("//span[contains(text(),'Do schowka')]");
     By buttonAddToWishList = By.xpath("//span[contains(text(),'Schowek')]");
+    By checkboxCompare = By.xpath("//a//span[contains(text(),'Porównaj')]");
+    By clickIconCompare = By.xpath("//a[@href=\"/compare\"]");
+
 
     public ProductPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
     public void clickAddToCart() {
-        WebElement clickButton = getWait().until(ExpectedConditions.presenceOfElementLocated(buttonAddToCart));
-        clickButton.click();
+        getWait().until(ExpectedConditions.presenceOfElementLocated(buttonAddToCart)).click();
     }
 
     public void closeGuaranteeBanner() throws InterruptedException {
-
-        WebElement closeBanner = getWait().until(ExpectedConditions.presenceOfElementLocated(guaranteeBanner));
         Thread.sleep(5000);
-        closeBanner.click();
+        getWait().until(ExpectedConditions.presenceOfElementLocated(guaranteeBanner)).click();
     }
 
     public CartPage clickGoToCart() {
-        WebElement goToCart = getDriver().findElement(this.goToCart);
-        goToCart.click();
+        getDriver().findElement(this.goToCart).click();
         return new CartPage(getDriver(), getWait());
     }
 
-    public void scroll()
-    {
+    public void scroll() {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0, 500)");
     }
 
-    public void setAddToWishListLocator(){
-
+    public void setAddToWishList() {
         getWait().until(ExpectedConditions.presenceOfElementLocated(addToWishListLocator));
-        WebElement addToFavorites = getDriver().findElement(addToWishListLocator);
-        addToFavorites.click();
+        getDriver().findElement(addToWishListLocator).click();
     }
 
-    public WishListPage clickButtonWishList(){
-        WebElement buttonGoToWishList = getDriver().findElement(buttonAddToWishList);
-        buttonGoToWishList.click();
+    public WishListPage clickButtonWishList() {
+        getDriver().findElement(buttonAddToWishList).click();
         return new WishListPage(getDriver(), getWait());
     }
+
+    public void setAddToCompare() {
+        getWait().until(ExpectedConditions.presenceOfElementLocated(checkboxCompare));
+        WebElement checkbox = getDriver().findElement(checkboxCompare);
+
+        if (!checkbox.isSelected()) {
+            checkbox.click();
+        }
+    }
+
+    public ComparePage clickCompare() {
+        getWait().until(ExpectedConditions.presenceOfElementLocated(clickIconCompare));
+        getDriver().findElement(clickIconCompare).click();
+        return new ComparePage(getDriver(), getWait());
+    }
+
 }

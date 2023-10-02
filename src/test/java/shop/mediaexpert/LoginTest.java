@@ -5,7 +5,6 @@ import org.junit.Test;
 import shop.mediaexpert.pages.LoginPage;
 import shop.mediaexpert.pages.MainPage;
 
-//todo: change structure of classes vs test cases
 public class LoginTest {
     @Test
     public void testLogin() {
